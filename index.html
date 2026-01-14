@@ -122,16 +122,16 @@ body{
 }
 .card:hover img{transform:scale(1.1) rotate(5deg)}
 
-.card h3{font-size:18px}
+.card .info{flex:1}
+.card h3{font-size:18px;margin-bottom:4px}
 
-/* subtitle */
+/* subtitle mờ */
 .sub-text{
   font-size:14px;
-  font-weight:500;
   color:rgba(31,41,55,.55);
 }
 
-/* FIX BUTTON */
+/* FIX NÚT */
 .card .btn{
   margin-left:auto;
   padding:12px 20px;
@@ -153,18 +153,6 @@ body{
 }
 .card .btn:hover::before{transform:translateX(100%)}
 .card .btn:hover{transform:translateY(-3px) scale(1.05)}
-
-/* ===== SIMPLE CARD ===== */
-.simple-card{
-  background:#fff;
-  border-radius:var(--radius);
-  box-shadow:var(--shadow);
-  padding:20px;
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-  margin-bottom:18px;
-}
 
 /* ===== ANIMATIONS ===== */
 @keyframes fadeSlideUp{
@@ -200,67 +188,80 @@ body{
 <!-- ESIGN -->
 <div id="esign" class="content active">
 
-  <!-- ESIGN QINGDAO -->
   <div class="card">
     <img src="https://khoindvn.io.vn/img/pf/profile-pic.png">
-    <div>
-      <h3>ESign New Cert ✅<br>
-        <span class="sub-text">Qingdao Rural Commercial Bank Co., Ltd (UNOFFICIAL)</span>
-      </h3>
+    <div class="info">
+      <h3>ESign New Cert ✅</h3>
+      <div class="sub-text">Qingdao Rural Commercial Bank Co., Ltd (UNOFFICIAL)</div>
     </div>
     <a class="btn" href="https://api.khoindvn.eu.org/KXcveB">DOWNLOAD</a>
   </div>
 
-  <!-- ESIGN CHÍNH -->
   <div class="card">
     <img src="https://khoindvn.io.vn/img/pf/profile-pic.png">
-    <div>
-      <h3>ESign<br>
-        <span class="sub-text">Commission on Elections</span>
-      </h3>
+    <div class="info">
+      <h3>ESign</h3>
+      <div class="sub-text">Commission on Elections</div>
     </div>
     <a class="btn" href="itms-services://?action=download-manifest&url=https://raw.githubusercontent.com/TruongAn-GAMING/Web-Intall-Esign-Ksign/refs/heads/main/Web/Esign%20Comission.plist">DOWNLOAD</a>
   </div>
 
-  <!-- CLONE ESIGN -->
-  <script>
-    const esigns=[
-      "CHIBA INSTITUTE OF TECHNOLOGY",
-      "Beijing Esensoft Co., Ltd",
-      "NREH ESTATE INFORMATION TECHNOLOGY CO.,LTD",
-      "China Railway Eryuan Engineering Group Co., Ltd.",
-      "EEO Education ltd",
-      "TCL household Appliance Marketing Co., LTD",
-      "Wuling Power Corporation",
-      "HDFC Bank Limited"
-    ];
-    document.write(esigns.map(e=>`
+</div>
+  <!-- Clone -->
+<script>
+const esigns = [
+  "CHIBA INSTITUTE OF TECHNOLOGY",
+  "Beijing Esensoft Co., Ltd",
+  "NREH ESTATE INFORMATION TECHNOLOGY CO.,LTD",
+  "China Railway Eryuan Engineering Group Co., Ltd.",
+  "EEO Education ltd",
+  "TCL household Appliance Marketing Co., LTD",
+  "Wuling Power Corporation",
+  "HDFC Bank Limited"
+];
+
+document.write(
+  esigns.map(e => `
     <div class="card">
       <img src="https://khoindvn.io.vn/img/pf/profile-pic.png">
-      <div>
-        <h3>ESign<br>
-          <span class="sub-text">${e}</span>
-        </h3>
+      <div class="info">
+        <h3>ESign</h3>
+        <div class="sub-text">${e}</div>
       </div>
-      <a class="btn" href="itms-services://?action=download-manifest&url=https://raw.githubusercontent.com/TruongAn-GAMING/Web-Intall-Esign-Ksign/refs/heads/main/Web/manifest.plist">DOWNLOAD</a>
-    </div>`).join(""));
-  </script>
-
-</div>
+      <a class="btn"
+        href="itms-services://?action=download-manifest&url=https://raw.githubusercontent.com/TruongAn-GAMING/Web-Intall-Esign-Ksign/refs/heads/main/Web/manifest.plist">
+        DOWNLOAD
+      </a>
+    </div>
+  `).join("")
+);
+</script>  
 
 <!-- CERT -->
 <div id="cert" class="content">
-  <div class="simple-card">
-    <span>📜 Certificate Esign</span>
-    <a class="btn" href="https://github.com/TruongAn-GAMING/Esign/raw/refs/heads/main/Web/ESignCert.zip">DOWNLOAD</a>
+  <div class="card">
+    <img src="https://khoindvn.io.vn/img/pf/profile-pic.png">
+    <div class="info">
+      <h3>📜 Certificate Esign</h3>
+      <div class="sub-text">ESign certificate package</div>
+    </div>
+    <a class="btn" href="https://github.com/TruongAn-GAMING/Esign/raw/refs/heads/main/Web/ESignCert.zip">
+      DOWNLOAD
+    </a>
   </div>
 </div>
 
 <!-- DNS -->
 <div id="dns" class="content">
-  <div class="simple-card">
-    <span>🔰 DNS V5 (My DNS)</span>
-    <a class="btn" href="https://github.com/TruongAn-GAMING/Esign/releases/download/1839178583.0/DNS_V5.mobileconfig">DOWNLOAD</a>
+  <div class="card">
+    <img src="https://khoindvn.io.vn/img/pf/profile-pic.png">
+    <div class="info">
+      <h3>🔰 DNS V5 (My DNS)</h3>
+      <div class="sub-text">Mobile configuration profile</div>
+    </div>
+    <a class="btn" href="https://github.com/TruongAn-GAMING/Esign/releases/download/1839178583.0/DNS_V5.mobileconfig">
+      DOWNLOAD
+    </a>
   </div>
 </div>
 
