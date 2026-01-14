@@ -1,189 +1,123 @@
 <!DOCTYPE html>
 <html lang="vi">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<meta charset="UTF-8">
 <title>ESIGN AND CERT</title>
 
 <style>
-:root{
-  --blue:#1e88ff;
-  --blue-soft:#e8f1ff;
-  --text:#1f2937;
-  --radius:18px;
-  --shadow:0 15px 40px rgba(30,136,255,.15);
-  --shadow-hover:0 25px 60px rgba(30,136,255,.25);
+*{
+  box-sizing:border-box;
+  font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto;
 }
 
-*{box-sizing:border-box;margin:0;padding:0;font-family:Inter,system-ui}
 body{
-  background:linear-gradient(180deg,#f8fbff,#eef4ff);
-  color:var(--text);
-  min-height:100vh;
-  overflow-x:hidden;
+  background:#0b0b0b;
+  color:#fff;
+  margin:0;
+  padding:0;
 }
 
-/* ===== HERO ===== */
-.hero{
-  text-align:center;
-  padding:60px 20px 30px;
-  position:relative;
-  overflow:hidden;
-}
-.hero::before{
-  content:'';
-  position:absolute;
-  inset:0;
-  background:linear-gradient(45deg, rgba(30,136,255,0.1), rgba(30,136,255,0.05));
-  z-index:-1;
-}
-.hero img{
-  width:140px;
-  height:140px;
-  border-radius:50%;
-  object-fit:cover;
-  box-shadow:var(--shadow);
-  border:4px solid #fff;
-  animation:float 6s ease-in-out infinite;
-}
-.hero h1{
-  margin-top:20px;
-  font-size:36px;
-  font-weight:800;
-  letter-spacing:1px;
-  color:var(--blue);
-  animation:textGlow 3s ease-in-out infinite alternate;
-}
-
-/* ===== TABS ===== */
 .tabs{
   display:flex;
-  justify-content:center;
-  gap:14px;
-  margin:30px auto;
-  flex-wrap:wrap;
-}
-.tab{
-  padding:12px 22px;
-  border-radius:999px;
-  background:#fff;
-  cursor:pointer;
-  font-weight:600;
-  box-shadow:0 6px 18px rgba(0,0,0,.08);
-  transition:all .4s cubic-bezier(.175,.885,.32,1.275);
-}
-.tab.active{
-  background:var(--blue);
-  color:#fff;
-  transform:translateY(-3px);
+  gap:12px;
+  padding:16px;
+  background:#111;
 }
 
-/* ===== CONTENT ===== */
-.container{max-width:1100px;margin:auto;padding:20px}
-.content{display:none}
+.tab{
+  padding:10px 16px;
+  border-radius:10px;
+  background:#1a1a1a;
+  cursor:pointer;
+  transition:.3s;
+}
+
+.tab.active{
+  background:#2ecc71;
+  color:#000;
+}
+
+.content{
+  display:none;
+  padding:16px;
+}
+
 .content.active{
   display:block;
-  animation:fadeSlideUp .6s cubic-bezier(.175,.885,.32,1.275);
 }
 
-/* ===== CARD ===== */
 .card{
-  background:#fff;
-  border-radius:var(--radius);
-  box-shadow:var(--shadow);
-  padding:18px;
   display:flex;
   align-items:center;
-  gap:18px;
-  margin-bottom:18px;
-  position:relative;
-  overflow:hidden;
-  transition:all .5s cubic-bezier(.175,.885,.32,1.275);
+  justify-content:space-between;
+  gap:14px;
+  background:#141414;
+  border-radius:16px;
+  padding:14px 16px;
+  margin-bottom:14px;
+  animation:fadeUp .4s ease;
 }
-.card::before{
-  content:'';
-  position:absolute;
-  top:0;left:0;
-  width:4px;height:100%;
-  background:var(--blue);
-  transition:.4s;
+
+@keyframes fadeUp{
+  from{opacity:0;transform:translateY(10px)}
+  to{opacity:1;transform:none}
 }
-.card:hover::before{width:100%;opacity:.1}
-.card:hover{
-  transform:translateY(-8px) scale(1.02);
-  box-shadow:var(--shadow-hover);
-}
+
 .card img{
-  width:80px;
-  height:80px;
-  border-radius:14px;
-  object-fit:cover;
-  transition:.4s;
+  width:48px;
+  height:48px;
+  border-radius:50%;
 }
-.card:hover img{transform:scale(1.1) rotate(5deg)}
 
-.card .info{flex:1}
-.card h3{font-size:18px;margin-bottom:4px}
+.info{
+  flex:1;
+}
 
-/* subtitle mờ */
+.info h3{
+  margin:0;
+  font-size:15px;
+}
+
 .sub-text{
-  font-size:14px;
-  color:rgba(31,41,55,.55);
+  margin-top:4px;
+  font-size:12px;
+  opacity:.55;
 }
 
-/* FIX NÚT */
-.card .btn{
-  margin-left:auto;
-  padding:12px 20px;
+.btn{
+  padding:10px 18px;
   border-radius:12px;
-  background:var(--blue);
-  color:#fff;
+  background:linear-gradient(135deg,#2ecc71,#27ae60);
+  color:#000;
+  font-weight:600;
   text-decoration:none;
-  font-weight:700;
-  position:relative;
-  overflow:hidden;
+  transition:.25s;
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  flex-shrink:0;
 }
-.card .btn::before{
-  content:'';
-  position:absolute;
-  inset:0;
-  background:linear-gradient(90deg,transparent,rgba(255,255,255,.3),transparent);
-  transform:translateX(-100%);
-  transition:.5s;
-}
-.card .btn:hover::before{transform:translateX(100%)}
-.card .btn:hover{transform:translateY(-3px) scale(1.05)}
 
-/* ===== ANIMATIONS ===== */
-@keyframes fadeSlideUp{
-  from{opacity:0;transform:translateY(30px) scale(.95)}
-  to{opacity:1;transform:translateY(0) scale(1)}
+.btn:hover{
+  transform:scale(1.05);
+  box-shadow:0 0 12px rgba(46,204,113,.6);
 }
-@keyframes float{
-  0%,100%{transform:translateY(0)}
-  50%{transform:translateY(-15px)}
-}
-@keyframes textGlow{
-  from{text-shadow:0 0 10px rgba(30,136,255,.3)}
-  to{text-shadow:0 0 20px rgba(30,136,255,.6)}
+
+/* FIX SAFARI / IOS */
+a.btn{
+  color:#000 !important;
+  text-decoration:none !important;
 }
 </style>
 </head>
 
 <body>
 
-<div class="hero">
-  <img src="https://khoindvn.io.vn/img/pf/profile-pic.png">
-  <h1>ESIGN AND CERT</h1>
-</div>
-
 <div class="tabs">
-  <div class="tab active" onclick="showTab('esign')">ESIGN</div>
-  <div class="tab" onclick="showTab('cert')">CERTIFICATE</div>
-  <div class="tab" onclick="showTab('dns')">DNS PROFILE</div>
+  <div class="tab active" onclick="openTab('esign')">ESIGN</div>
+  <div class="tab" onclick="openTab('cert')">CERT</div>
+  <div class="tab" onclick="openTab('dns')">DNS</div>
 </div>
-
-<div class="container">
 
 <!-- ESIGN -->
 <div id="esign" class="content active">
@@ -203,47 +137,48 @@ body{
       <h3>ESign</h3>
       <div class="sub-text">Commission on Elections</div>
     </div>
-    <a class="btn" href="itms-services://?action=download-manifest&url=https://raw.githubusercontent.com/TruongAn-GAMING/Web-Intall-Esign-Ksign/refs/heads/main/Web/Esign%20Comission.plist">DOWNLOAD</a>
+    <a class="btn" href="itms-services://?action=download-manifest&url=https://raw.githubusercontent.com/TruongAn-GAMING/Web-Intall-Esign-Ksign/refs/heads/main/Web/Esign%20Comission.plist">
+      DOWNLOAD
+    </a>
   </div>
 
-</div>
-  <!-- Clone -->
-<script>
-const esigns = [
-  "CHIBA INSTITUTE OF TECHNOLOGY",
-  "Beijing Esensoft Co., Ltd",
-  "NREH ESTATE INFORMATION TECHNOLOGY CO.,LTD",
-  "China Railway Eryuan Engineering Group Co., Ltd.",
-  "EEO Education ltd",
-  "TCL household Appliance Marketing Co., LTD",
-  "Wuling Power Corporation",
-  "HDFC Bank Limited"
-];
+  <script>
+  const esigns = [
+    "CHIBA INSTITUTE OF TECHNOLOGY",
+    "Beijing Esensoft Co., Ltd",
+    "NREH ESTATE INFORMATION TECHNOLOGY CO.,LTD",
+    "China Railway Eryuan Engineering Group Co., Ltd.",
+    "EEO Education ltd",
+    "TCL household Appliance Marketing Co., LTD",
+    "Wuling Power Corporation",
+    "HDFC Bank Limited"
+  ];
 
-document.write(
-  esigns.map(e => `
-    <div class="card">
-      <img src="https://khoindvn.io.vn/img/pf/profile-pic.png">
-      <div class="info">
-        <h3>ESign</h3>
-        <div class="sub-text">${e}</div>
+  document.write(
+    esigns.map(e=>`
+      <div class="card">
+        <img src="https://khoindvn.io.vn/img/pf/profile-pic.png">
+        <div class="info">
+          <h3>ESign</h3>
+          <div class="sub-text">${e}</div>
+        </div>
+        <a class="btn" href="itms-services://?action=download-manifest&url=https://raw.githubusercontent.com/TruongAn-GAMING/Web-Intall-Esign-Ksign/refs/heads/main/Web/manifest.plist">
+          DOWNLOAD
+        </a>
       </div>
-      <a class="btn"
-        href="itms-services://?action=download-manifest&url=https://raw.githubusercontent.com/TruongAn-GAMING/Web-Intall-Esign-Ksign/refs/heads/main/Web/manifest.plist">
-        DOWNLOAD
-      </a>
-    </div>
-  `).join("")
-);
-</script>  
+    `).join("")
+  );
+  </script>
+
+</div>
 
 <!-- CERT -->
 <div id="cert" class="content">
   <div class="card">
     <img src="https://khoindvn.io.vn/img/pf/profile-pic.png">
     <div class="info">
-      <h3>📜 Certificate Esign</h3>
-      <div class="sub-text">ESign certificate package</div>
+      <h3>ESign Certificate</h3>
+      <div class="sub-text">Install certificate for signing</div>
     </div>
     <a class="btn" href="https://github.com/TruongAn-GAMING/Esign/raw/refs/heads/main/Web/ESignCert.zip">
       DOWNLOAD
@@ -256,8 +191,8 @@ document.write(
   <div class="card">
     <img src="https://khoindvn.io.vn/img/pf/profile-pic.png">
     <div class="info">
-      <h3>🔰 DNS V5 (My DNS)</h3>
-      <div class="sub-text">Mobile configuration profile</div>
+      <h3>DNS V5</h3>
+      <div class="sub-text">MY DNS</div>
     </div>
     <a class="btn" href="https://github.com/TruongAn-GAMING/Esign/releases/download/1839178583.0/DNS_V5.mobileconfig">
       DOWNLOAD
@@ -265,12 +200,10 @@ document.write(
   </div>
 </div>
 
-</div>
-
 <script>
-function showTab(id){
-  document.querySelectorAll('.tab').forEach(t=>t.classList.remove('active'));
+function openTab(id){
   document.querySelectorAll('.content').forEach(c=>c.classList.remove('active'));
+  document.querySelectorAll('.tab').forEach(t=>t.classList.remove('active'));
   document.getElementById(id).classList.add('active');
   event.target.classList.add('active');
 }
