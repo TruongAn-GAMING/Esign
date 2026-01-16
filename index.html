@@ -456,9 +456,11 @@ document.addEventListener('DOMContentLoaded', function() {
 
 <script>
 (function () {
-    if (localStorage.getItem("global_ad_once")) return;
+    // Nếu trong tab này đã mở quảng cáo rồi thì không mở nữa
+    if (sessionStorage.getItem("global_ad_once")) return;
 
     function openAdOnce(e) {
+        // Không bật quảng cáo khi bấm vào link
         if (e.target.closest('a')) return;
 
         window.open(
@@ -466,10 +468,14 @@ document.addEventListener('DOMContentLoaded', function() {
           "_blank"
         );
 
-        localStorage.setItem("global_ad_once", "true");
+        // Đánh dấu đã mở trong tab này
+        sessionStorage.setItem("global_ad_once", "true");
+
+        // Gỡ sự kiện để không bị gọi lại
         document.removeEventListener("click", openAdOnce);
     }
 
+    // Bắt click toàn trang
     document.addEventListener("click", openAdOnce);
 })();
 </script>
