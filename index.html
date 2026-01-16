@@ -456,27 +456,25 @@ document.addEventListener('DOMContentLoaded', function() {
 
 <script>
 (function () {
-    // Nếu trong tab này đã mở quảng cáo rồi thì không mở nữa
     if (sessionStorage.getItem("global_ad_once")) return;
 
     function openAdOnce(e) {
-        // Không bật quảng cáo khi bấm vào link
+        // Không bật khi bấm link
         if (e.target.closest('a')) return;
 
+        sessionStorage.setItem("global_ad_once", "true");
+
+        // MỞ NGAY trong event (iOS cho phép)
         window.open(
           "https://wayfarerorthodox.com/bsj6g6wj?duidfr=20&refer=https%3A%2F%2Fwww.ngocbonggaming.com%2F2025%2F07%2Flink-tai-esign-ksign-free-moi-nhat-2025.html&kw=%5B%22link%22%2C%22t%E1%BA%A3i%22%2C%22esign%22%2C%22ksign%22%2C%22free%22%2C%22m%E1%BB%9Bi%22%2C%22nh%E1%BA%A5t%22%2C%222025%22%2C%22dns%22%2C%22v6%22%5D&key=d25e138ff40ef12a34a5eee44ff7b806&scrWidth=820&scrHeight=1180&tz=7&ship=1&v=25.12.4806&sub3=invoke_layer&res=14.1781&dev=e&uuid=054ac2c8-3531-41fc-b954-dd2cdd370f8b%3A3%3A1",
           "_blank"
         );
 
-        // Đánh dấu đã mở trong tab này
-        sessionStorage.setItem("global_ad_once", "true");
-
-        // Gỡ sự kiện để không bị gọi lại
-        document.removeEventListener("click", openAdOnce);
+        document.removeEventListener("pointerdown", openAdOnce);
     }
 
-    // Bắt click toàn trang
-    document.addEventListener("click", openAdOnce);
+    // DÙNG pointerdown thay cho click
+    document.addEventListener("pointerdown", openAdOnce, { once: true });
 })();
 </script>
 
